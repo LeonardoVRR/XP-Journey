@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+#userProfile {
+    padding: 10px;
+}
+
+#userProfile button {
+    @apply bg-red-500;
+    @apply text-white;
+    @apply rounded-xl;
+    padding: 10px;
+}
+
+button {
+    transition: all .2s linear;
+    @apply cursor-pointer;
+}
+
+button:hover {
+    @apply opacity-90;
+}
+
+button:active {
+    @apply scale-[0.9]
+}
+
+/* Estilo do elemento progress */
+
+/* Estilo do "indicador de progresso" dentro da barra */
+progress::-webkit-progress-bar {
+    background-color: #f3f3f3;
+    /* Cor de fundo da barra */
+    border-radius: 10px;
+    /* Arredondar os cantos */
+}
+
+progress::-webkit-progress-value {
+    background-color: #28a745;
+    /* Cor do valor de progresso */
+    border-radius: 10px;
+    /* Arredondar os cantos */
+}
+
+progress::-moz-progress-bar {
+    background-color: #28a745;
+    /* Cor do valor de progresso */
+    border-radius: 10px;
+}
+
+/* -------------------- lista de tarefas -------------------- */
+
+#to_do_list_container {
+    @apply mt-5;
+}
+
+#banner {
+    padding: 20px;
+    background: url("assets/banners/cold-night.jpg") no-repeat bottom;
+    background-size: cover;
+}
+
+#filters {
+    padding: 10px;
+}
+
+#searchBar {
+    padding: 5px 10px;
+}
+
+#filter_Container {
+    border-bottom: 1px solid black;
+    @apply pb-1;
+}
+
+#filter {
+    margin-left: 5%;
+
+}
+
+#to_do_list thead {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+#to_do_list tbody td {
+    @apply p-2;
+    @apply border-b-1 border-gray-300
+}
+
+#to_do_list tbody td:nth-child(1) {
+    @apply flex justify-center;
+}
+
+#to_do_list tbody td:nth-child(1) img {
+    @apply aspect-square max-w-6;
+}
+
+#to_do_list tbody td:nth-child(2) {
+    @apply truncate;
+    @apply max-w-[120px];
+}
+
+#to_do_list tbody td:nth-child(5) {
+    @apply flex justify-around;
+}
+
+#to_do_list tbody td:nth-child(5) button {
+    @apply aspect-square max-w-6;
+}
+
+/* -------------------- pop-up criar tarefa -------------------- */
+
+.createTask {
+    @apply p-1 select-none overflow-hidden overflow-y-auto;
+}
+
+.createTask form input[type="text"] {
+    @apply p-1 pl-3;
+}
+
+.selectDifficulty {
+    @apply pl-5;
+}
+
+#createTask textarea {
+    @apply p-2 rounded-2xl h-full;
+}
+
+#cancelTaskBtn,
+#createTaskBtn {
+    @apply text-white rounded-xl p-[10px] w-[50%] mb-2;
+}
