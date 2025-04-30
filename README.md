@@ -1,12 +1,65 @@
-# React + Vite
+<h1 align="center">
+    XP-Journey
+</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Índice
 
-Currently, two official plugins are available:
+- [Descrição do Projeto](#descrição-do-projeto)
+- [Objetivo do projeto](#objetivo-do-projeto)
+- [Funcionalidades](#🎮-funcionalidades)
+- [Pré-requisitos](#pré-requisitos)
+- [Resultado final do projeto](#resultado-final-do-projeto)
+- [Acesso ao Projeto](#acesso-ao-projeto)
+- [Tecnologias utilizadas](#tecnologias-utilizadas)
+- [Licença](#licença)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Descrição do projeto
 
-## Expanding the ESLint configuration
+Este projeto é uma aplicação web desenvolvida com React, TailwindCSS e JavaScript, que transforma uma simples lista de tarefas em uma experiência divertida e motivadora, inspirada em jogos de RPG.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Inicialmente criado como um exercício para consolidar meus primeiros aprendizados com React e TailwindCSS, o projeto evoluiu para algo maior: um sistema de tarefas gamificado, onde o usuário ganha XP, moedas e sobe de nível conforme realiza suas tarefas diárias.
+
+## Objetivo do projeto
+
+O principal objetivo deste projeto foi praticar os conceitos básicos de React, como componentização, uso de hooks, roteamento com React Router, além de explorar a estilização com TailwindCSS e o armazenamento de dados no navegador com LocalStorage.
+
+⚠️ Observação: O design foi desenvolvido pensando na versão desktop. Para a melhor experiência, utilize um computador.
+
+## 🎮 Funcionalidades
+
+- ✅ **Criar, editar, concluir, visualizar e excluir tarefas**
+- 🔍 **Filtros** por nome, status (pendente/concluída), nível de dificuldade e data de criação
+- 🎁 Sistema de **recompensas** com **XP** e **moedas virtuais**
+- 🛒 **Loja virtual** para comprar avatares, planos de fundo e banners
+- 🎨 **Personalização** da interface com os itens adquiridos
+- ⚙️ **Configurações de conta**: alterar nome de usuário e excluir conta
+- 💾 Armazenamento de dados utilizando **LocalStorage**
+
+## Pré-requisitos
+
+não é necessário nenhum pré-requisito é só acessar o projeto pelo link disponibilizado em [Acesso ao Projeto](#acesso-ao-projeto) e utiliza-lo.
+
+## Resultado final do projeto
+
+![alt text](<FireShot Capture 018 - XP Journey - [localhost].png>)
+
+![alt text](<FireShot Capture 014 - XP Journey - [localhost].png>)
+
+![alt text](<FireShot Capture 015 - XP Journey - [localhost].png>)
+
+## Acesso ao Projeto
+
+para acessar o projeto utilize o seguinte link:
+
+## Tecnologias utilizadas
+
+- HTML5
+- CSS3
+- JavaScript
+- React
+- React Router
+- Tailwind
+
+## Licença
+
+MIT License

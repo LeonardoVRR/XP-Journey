@@ -30,7 +30,7 @@ import {
   chestSprites,
   openChestSprites,
 } from "../../Components/ImportAssets/ImportAssets.jsx";
-import InfoModal from "../../Components/InfoModal/infoModal.jsx";
+import InfoModal from "../../Components/InfoModal/InfoModal.jsx";
 import Switch from "../../Components/Switch/Switch.jsx";
 
 //import bannerTeste from "../../assets/banners/banner_6.webp";

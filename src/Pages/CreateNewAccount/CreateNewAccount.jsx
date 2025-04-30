@@ -21,7 +21,7 @@ import {
   shopAnimatedBanners,
   shopBackgrounds,
 } from "../../Components/ImportAssets/ImportAssets.jsx";
-import InfoModal from "../../Components/InfoModal/infoModal.jsx";
+import InfoModal from "../../Components/InfoModal/InfoModal.jsx";
 
 function CreateNewAccount() {
   const [displayLoginAccount, setDisplayLoginAccount] = useState("hidden");
