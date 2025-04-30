@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+.modalContainer {
+    @apply p-3;
+}
+
+.modalContainer>* {
+    @apply w-full text-center;
+}
+
+.modalContainer button {
+    @apply rounded-xl bg-red-500 text-[1dvw] p-2 w-[30%] h-[5%] text-white;
+}

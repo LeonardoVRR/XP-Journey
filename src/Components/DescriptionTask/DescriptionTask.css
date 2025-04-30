@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: "Alkhemikal";
+    src: url("../../assets/fonts/alkhemikal/Alkhemikal.ttf") format("truetype");
+}
+
+.reward {
+    @apply flex justify-center items-center gap-1 text-[1.3dvw];
+    font-family: 'Alkhemikal', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.reward img {
+    @apply max-w-full max-h-full aspect-square;
+}

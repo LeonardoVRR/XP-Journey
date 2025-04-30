@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: 'VT323';
+    src: url("../../assets/fonts/VT323/VT323-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Action Comics';
+    src: url("../../assets/fonts/action_comics/Action Comics Black.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Marimpa';
+    src: url("../../assets/fonts/marimpa/Marimpa.ttf") format("truetype");
+}
+
+.container-left {
+    background: url("../../assets/NewAccount/background.png") no-repeat center;
+    background-size: cover;
+}
+
+.container-left h1 {
+    @apply text-[3dvw];
+}
+
+.welcomeMsg {
+    font-family: 'Marimpa', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.projectName {
+    /* @apply mt-1; */
+    font-family: 'Action Comics', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.container-left p {
+    font-family: 'VT323', 'Courier New', Courier, monospace;
+}
+
+/* -------------------------- container-right -------------------------- */
+
+/* .createAccountForm h1 {
+    @apply mb-9;
+} */
+
+.userNameContainer {
+    @apply p-4;
+}
+
+.loginAccountContainer button {
+    @apply p-2;
+}
+
+.createAccountForm input[type="text"] {
+    padding: 5px 10px;
+}
+
+/* choose avatar type */
+
+.chooseAvatarType>button {
+    @apply border-1 border-black rounded-2xl aspect-square w-[40%] text-[2dvw];
+}
+
+/* createAvatar */
+
+.appearanceOptions>div {
+    @apply flex flex-col items-center gap-1;
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+}
+
+.appearanceOptions h2 {
+    @apply text-2xl;
+}

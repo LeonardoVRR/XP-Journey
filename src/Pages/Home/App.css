@@ -1,0 +1,282 @@
+@import "tailwindcss";
+
+@font-face {
+    font-family: "Alkhemikal";
+    src: url("../../assets/fonts/alkhemikal/Alkhemikal.ttf") format("truetype");
+}
+
+.mainContainer {
+    background: no-repeat bottom;
+    background-size: cover;
+}
+
+#noAccount {
+    background: url("../../assets/icons/noAccount.gif") no-repeat center;
+    background-size: cover;
+    font-family: 'Alkhemikal', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#noAccount button {
+    @apply px-3 rounded-full;
+}
+
+#userProfile {
+    padding: 10px;
+}
+
+.accountBtnsContainer button {
+    @apply rounded-xl aspect-square bg-red-500 text-[1dvw] p-[0.5dvw] w-[50%];
+}
+
+.accountBtnsContainer img {
+    @apply max-w-full max-h-full select-none invert-100 pointer-events-none;
+}
+
+button {
+    transition: all .2s linear;
+    @apply cursor-pointer;
+}
+
+button:hover {
+    @apply opacity-90;
+}
+
+button:active {
+    @apply scale-[0.9]
+}
+
+/* Estilo do elemento progress */
+
+/* Estilo do "indicador de progresso" dentro da barra */
+progress::-webkit-progress-bar {
+    background-color: #f3f3f3;
+    /* Cor de fundo da barra */
+    border-radius: 10px;
+    /* Arredondar os cantos */
+}
+
+progress::-webkit-progress-value {
+    background-color: #28a745;
+    /* Cor do valor de progresso */
+    border-radius: 10px;
+    /* Arredondar os cantos */
+}
+
+progress::-moz-progress-bar {
+    background-color: #28a745;
+    /* Cor do valor de progresso */
+    border-radius: 10px;
+}
+
+
+
+/* -------------------- configurações da conta -------------------- */
+
+.accountConfigsContainer {
+    @apply p-2;
+}
+
+.accountConfigsContainer h1,
+.accountConfigsContainer label {
+    @apply text-[1.2dvw];
+}
+
+.accountConfigsContainer .changeUserName input[type="text"] {
+    @apply px-3 py-2;
+}
+
+.accountConfigsContainer .changeUserName button {
+    @apply rounded-xl bg-gray-500 text-white text-[1.2dvw] p-2 w-[50%];
+}
+
+.accountConfigsContainer .changePositionBanner button {
+    @apply px-2 border-1 border-black rounded-[30px] text-[1.1dvw] overflow-hidden;
+}
+
+.deleteAccount button {
+    @apply rounded-xl bg-red-500 text-white text-[1.2dvw] p-2 w-[50%];
+}
+
+.deleteAccountModal .deleteAccountMsg {
+    font-family: 'Alkhemikal', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.deleteAccountOptions button {
+    @apply rounded-xl text-white text-[1.2dvw] p-2 w-[50%];
+}
+
+/* -------------------- shopContainer -------------------- */
+
+.shopContainer {
+    @apply p-3;
+}
+
+.shopContainer .optionShopBtn {
+    @apply border-1 border-black rounded-2xl justify-self-center w-[70%] max-h-[50%] grow-1;
+}
+
+/* avatarShop */
+
+.avatarShop .btnOptionContainer button {
+    @apply bg-green-400 p-2 text-white rounded-[20px];
+}
+
+.customAvatarShopBtnOptions {
+    @apply px-4 w-full;
+}
+
+.customAvatarShopBtnOptions button {
+    @apply border-1 border-black p-1 w-full;
+}
+
+.emptyShopContainer {
+    font-family: 'Alkhemikal', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* -------------------- rewardContainer -------------------- */
+
+.rewardContainer {
+    @apply p-3;
+}
+
+.rewardContainer p {
+    @apply text-[3dvw];
+    font-family: 'Alkhemikal', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.receiveRewardBtn {
+    @apply text-white rounded-xl bg-red-500;
+}
+
+.rewardButton {
+    @apply absolute top-[50%];
+    transform: translateY(-50%);
+}
+
+/* -------------------- mensagem lista de tarefas vazia -------------------- */
+
+.noTaskMessage {
+    background: url("../../assets/icons/semTarefas.gif") no-repeat center;
+    background-size: cover;
+}
+
+.noTaskMessage {
+    font-family: 'Alkhemikal', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.noTaskMessage button {
+    @apply px-3;
+}
+
+/* -------------------- lista de tarefas -------------------- */
+
+.to_do_list_container {
+    @apply mt-5;
+}
+
+#banner {
+    padding: 20px;
+    background: no-repeat;
+    background-size: cover;
+}
+
+#filters {
+    padding: 10px;
+}
+
+#searchBar {
+    padding: 5px 10px;
+}
+
+#searchBar input {
+    border: none;
+}
+
+.filter_Container {
+
+    @apply pb-1 border-b-1 border-black;
+}
+
+#filter {
+    margin-left: 5%;
+
+}
+
+.to_do_list thead {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.to_do_list tbody td {
+    @apply p-2;
+    @apply border-b-1 border-gray-300
+}
+
+.to_do_list tbody td:nth-child(1) {
+    @apply flex justify-center;
+}
+
+.to_do_list tbody td:nth-child(1) img {
+    @apply aspect-square max-w-6;
+}
+
+.to_do_list tbody td:nth-child(2) {
+    @apply truncate;
+    @apply max-w-[120px];
+}
+
+.to_do_list tbody td:nth-child(6) {
+    @apply flex gap-1 justify-around;
+}
+
+.to_do_list tbody td:nth-child(6) button {
+    @apply aspect-square min-w-5 max-w-6;
+}
+
+/* -------------------- modal criar tarefa -------------------- */
+
+.createTask {
+    @apply p-1 select-none overflow-hidden overflow-y-auto;
+}
+
+.createTask form input[type="text"] {
+    @apply p-1 pl-3;
+}
+
+.selectDifficulty {
+    @apply pl-5;
+}
+
+#createTask textarea {
+    @apply p-2 rounded-2xl h-full;
+}
+
+#cancelTaskBtn,
+#createTaskBtn {
+    @apply text-white rounded-xl p-[10px] w-[50%] mb-2;
+}
+
+#taskDescription {
+    @apply p-6;
+}
+
+/* configs tema escuro */
+
+.darkModeTheme {
+    @apply bg-[#1f1f1f] text-white border-1 border-white;
+}
+
+.darkModeTheme section,
+.darkModeTheme div,
+.darkModeTheme button,
+.darkModeTheme input,
+.darkModeTheme img,
+.darkModeTheme thead,
+.darkModeTheme .changePositionBanner button {
+    @apply border-white fill-white;
+}
+
+.darkModeTheme textarea,
+.darkModeTheme input[type="text"] {
+    @apply bg-[#1f1f1f] border-1 border-white;
+}

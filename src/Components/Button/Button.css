@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+.btn {
+    @apply bg-red-500;
+    @apply text-white;
+    @apply rounded-xl;
+    padding: 10px;
+}
+
+.btn {
+    transition: all .2s linear;
+    @apply cursor-pointer;
+}
+
+.btn:hover {
+    @apply opacity-90;
+}
+
+.btn:active {
+    @apply scale-[0.9]
+}

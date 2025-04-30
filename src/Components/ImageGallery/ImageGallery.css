@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+.galleryContainer {
+    padding: 10px;
+    user-select: none;
+}
+
+.galleryContainer img {
+    pointer-events: none;
+}
+
+.selectedAvatar {
+    @apply border-6 border-red-500;
+}

@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+.createAvatar {
+    @apply p-4;
+}
+
+.head {
+    top: 37%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+}
+
+.head>img,
+.body img {
+    @apply max-w-full max-h-full;
+}
+
+.face img {
+    top: 58%;
+    left: 58%;
+    transform: translate(-50%, -50%);
+    @apply max-w-[50%] max-h-[50%] absolute;
+}
+
+.acessory img {
+    top: 54%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    @apply max-w-[58%] max-h-[50%] absolute;
+    rotate: 4deg;
+}
