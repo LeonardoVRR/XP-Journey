@@ -292,6 +292,9 @@ function App() {
       };
     });
 
+    console.log("Icones de recompensa carregados:");
+    console.log(rewardIconsList);
+
     setRewardsIcons(rewardIconsList);
   }, []);
 
@@ -1697,6 +1700,7 @@ function App() {
             </button>
             <button
               onClick={() => {
+                console.log(rewardsIcons);
                 setDisplayAccountSettings("grid");
               }}
               id="settingsBtn"
@@ -2062,7 +2066,19 @@ function App() {
                                                 removerAcentuacao(
                                                   task.difficulty
                                                 )
-                                              ].reciveRewardIcon
+                                              ].reciveRewardIcon == undefined
+                                              ? giftRewardReceivedIcon
+                                              : rewardsIcons[
+                                                  removerAcentuacao(
+                                                    task.difficulty
+                                                  )
+                                                ].reciveRewardIcon
+                                            : rewardsIcons[
+                                                removerAcentuacao(
+                                                  task.difficulty
+                                                )
+                                              ].rewardIcon == undefined
+                                            ? giftRewardIcon
                                             : rewardsIcons[
                                                 removerAcentuacao(
                                                   task.difficulty
@@ -2174,7 +2190,19 @@ function App() {
                                                 removerAcentuacao(
                                                   task.difficulty
                                                 )
-                                              ].reciveRewardIcon
+                                              ].reciveRewardIcon == undefined
+                                              ? giftRewardReceivedIcon
+                                              : rewardsIcons[
+                                                  removerAcentuacao(
+                                                    task.difficulty
+                                                  )
+                                                ].reciveRewardIcon
+                                            : rewardsIcons[
+                                                removerAcentuacao(
+                                                  task.difficulty
+                                                )
+                                              ].rewardIcon == undefined
+                                            ? giftRewardIcon
                                             : rewardsIcons[
                                                 removerAcentuacao(
                                                   task.difficulty
