@@ -1162,7 +1162,7 @@ function App() {
 
           <button
             onClick={closeShop}
-            className="receiveRewardBtn w-[20%] h-[60%] justify-self-center self-end text-[1.1dvw]"
+            className="receiveRewardBtn w-[20%] h-[60%] justify-self-center self-end "
           >
             Fechar
           </button>
@@ -1249,8 +1249,8 @@ function App() {
                   : "hidden"
               } grid-cols-3 grid-rows-1 gap-3`}
             >
-              <section className="flex flex-col justify-center items-center gap-4">
-                <h1>
+              <section className="grid grid-rows-[1fr_2fr_repeat(3, 1fr)] grid-cols-1 place-items-center gap-2 overflow-hidden overflow-y-auto">
+                <h1 className="text-[1.3dvw]">
                   {shopAreaSelected == "normalBanners" ||
                   shopAreaSelected == "animatedBanners"
                     ? "Banner"
@@ -1264,7 +1264,7 @@ function App() {
                     shopAreaSelected == "normalAvatars"
                       ? "rounded-full w-[50%] aspect-square"
                       : "rounded-[20px] aspect-[3/2] w-[80%]"
-                  } overflow-hidden border-1 border-black`}
+                  } overflow-hidden border-1 border-black `}
                 >
                   <div
                     style={
@@ -1281,7 +1281,7 @@ function App() {
                     } bg-no-repeat bg-center flex justify-center items-center`}
                   >
                     <p
-                      className={`text-center ${
+                      className={`text-center text-[100%] ${
                         !avatarShopSelected ? "block" : "hidden"
                       }`}
                     >
@@ -1289,11 +1289,29 @@ function App() {
                     </p>
                   </div>
                 </div>
-                <div className="flex justify-center items-center gap-4 w-full">
+                <div className="flex flex-wrap justify-center items-center gap-4 w-full text-[1.2dvw]">
                   <div className="text-center">
                     <h1>Raridade:</h1>
                     <p>
                       {itemInfoSelected ? itemInfoSelected.rarity : "------"}
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <h1>Status:</h1>
+                    <p>
+                      {itemInfoSelected
+                        ? accountOptionBtnSelected == "Loja"
+                          ? shopItems[selectedStoreType][selectedStoreItemType][
+                              itemInfoSelected.id
+                            ].unlocked
+                            ? "Desbloqueado"
+                            : "Bloqueado"
+                          : unlockedItems[selectedStoreType][
+                              selectedStoreItemType
+                            ][itemInfoSelected.id].unlocked
+                          ? "Desbloqueado"
+                          : "Bloqueado"
+                        : "------"}
                     </p>
                   </div>
                   <div
@@ -1308,24 +1326,6 @@ function App() {
                       {itemInfoSelected ? itemInfoSelected.price : "------"}{" "}
                     </p>
                   </div>
-                </div>
-                <div className="text-center">
-                  <h1>Status:</h1>
-                  <p>
-                    {itemInfoSelected
-                      ? accountOptionBtnSelected == "Loja"
-                        ? shopItems[selectedStoreType][selectedStoreItemType][
-                            itemInfoSelected.id
-                          ].unlocked
-                          ? "Desbloqueado"
-                          : "Bloqueado"
-                        : unlockedItems[selectedStoreType][
-                            selectedStoreItemType
-                          ][itemInfoSelected.id].unlocked
-                        ? "Desbloqueado"
-                        : "Bloqueado"
-                      : "------"}
-                  </p>
                 </div>
 
                 <div className="btnOptionContainer flex gap-4">
@@ -1466,7 +1466,7 @@ function App() {
                       selectedAccessory={changeCustomAvatar.acessory}
                     />
                   </div>
-                  <div className="flex justify-center items-center gap-4 w-full">
+                  <div className="flex flex-wrap justify-center items-center gap-4 w-full">
                     <div className="text-center">
                       <h1>Raridade:</h1>
                       <p>
@@ -1601,7 +1601,7 @@ function App() {
 
           <button
             onClick={closeShop}
-            className="receiveRewardBtn w-[20%] h-[60%] justify-self-center self-center text-[1.1dvw]"
+            className="receiveRewardBtn w-[20%] h-[60%] justify-self-center self-center "
           >
             Fechar
           </button>
