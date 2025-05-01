@@ -262,37 +262,46 @@ function App() {
     } de ${mes} de ${ano}`;
     setDate(currentDate);
 
-    const rewardsIconsSrc = Object.values(chestSprites).map(
-      (img) => img.default
+    const rewardsIconsSrc = Object.entries(chestSprites).map(([path, mod]) => {
+      const name = path
+        .split("/")
+        .pop()
+        .replace(/\.(png|jpe?g|gif)$/, "");
+      return { name, src: mod.default };
+    });
+
+    const reciveRewardsSrc = Object.entries(openChestSprites).map(
+      ([path, mod]) => {
+        const name = path
+          .split("/")
+          .pop()
+          .replace(/\.(png|jpe?g|gif)$/, "");
+        return { name, src: mod.default };
+      }
     );
 
-    const reciveRewardsSrc = Object.values(openChestSprites).map(
-      (img) => img.default
-    );
+    const rewardIconsList = {};
 
-    let rewardIconsList = {};
+    rewardsIconsSrc.forEach(({ name, src }) => {
+      // Procura o correspondente cujo nome começa igual ao nome base
+      const match = reciveRewardsSrc.find((r) => r.name.startsWith(name));
 
-    rewardsIconsSrc.forEach((item, index) => {
-      const rarity = item.split("/");
-      const name = rarity[rarity.length - 1].replace(".png", "");
-      //console.log(name);
-
-      let difficulty =
-        name == "legendaryReward"
+      const difficulty =
+        name === "legendaryReward"
           ? "desafio"
-          : name == "epicReward"
+          : name === "epicReward"
           ? "dificil"
-          : name == "rareReward"
+          : name === "rareReward"
           ? "medio"
           : "facil";
 
       rewardIconsList[difficulty] = {
-        rewardIcon: item,
-        reciveRewardIcon: reciveRewardsSrc[index],
+        rewardIcon: src,
+        reciveRewardIcon: match?.src || null, // se não encontrar, usa string vazia
       };
     });
 
-    console.log("Icones de recompensa carregados:");
+    console.log("Ícones de recompensa carregados:");
     console.log(rewardIconsList);
 
     setRewardsIcons(rewardIconsList);
