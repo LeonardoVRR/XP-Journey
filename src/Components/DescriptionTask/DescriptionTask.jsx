@@ -6,14 +6,11 @@ function DescriptionTask({
   displayTaskDescription,
   setDisplayTaskDescription,
   rewards,
-  coinIMG,
   xpIMG,
 }) {
   const statusClickDescription = taskInfo.isCompleted
     ? " Concluida"
     : " Pendente";
-
-  console.log(coinIMG);
 
   return (
     <div
@@ -62,7 +59,7 @@ function DescriptionTask({
           }`}
         >
           <p>{rewards.coins} moedas</p>
-          <img src={coinIMG} alt="" className="w-[2.5dvw]" />
+          <img src={rewards.coinIMG} alt="" className="w-[2.5dvw]" />
         </div>
         <div
           className={`reward ${

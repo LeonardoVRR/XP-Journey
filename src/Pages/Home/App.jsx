@@ -81,33 +81,9 @@ function App() {
     "Mestre da Jornada", //lvl 100
   ];
 
-  const rewardsList = {
-    facil: {
-      coins: 2,
-      xp: 5,
-      coinIMG: "bronze_coin.png",
-    },
-    medio: {
-      coins: 5,
-      xp: 15,
-      coinIMG: "silver_coin.png",
-    },
-    dificil: {
-      coins: 20,
-      xp: 50,
-      coinIMG: "gold_coin.png",
-    },
-    desafio: {
-      coins: 50,
-      xp: 100,
-      coinIMG: "diamond_coin.png",
-    },
-  };
-
+  const [rewardsList, setRewardsList] = useState(null);
   const [rewardsIcons, setRewardsIcons] = useState(null);
 
-  let listImgCoins = useRef([]);
-  const [coinIMG, setCoinIMG] = useState(null);
   const [date, setDate] = useState(null);
 
   //const [imageList, setImageList] = useState(shopAvatars);
@@ -262,6 +238,54 @@ function App() {
     } de ${mes} de ${ano}`;
     setDate(currentDate);
 
+    const coinsIconsSrc = Object.entries(coinSprites).map(([path, mod]) => {
+      const name = path
+        .split("/")
+        .pop()
+        .replace(/\.(png|jpe?g|gif)$/, "");
+      return { name, src: mod.default };
+    });
+
+    const tasksRewardsList = {
+      facil: {
+        coins: 2,
+        xp: 5,
+        coinIMG: "bronze_coin.png",
+      },
+      medio: {
+        coins: 5,
+        xp: 15,
+        coinIMG: "silver_coin.png",
+      },
+      dificil: {
+        coins: 20,
+        xp: 50,
+        coinIMG: "gold_coin.png",
+      },
+      desafio: {
+        coins: 50,
+        xp: 100,
+        coinIMG: "diamond_coin.png",
+      },
+    };
+
+    coinsIconsSrc.forEach(({ name, src }) => {
+      if (name != "xp") {
+        const difficulty =
+          name === "diamond_coin"
+            ? "desafio"
+            : name === "gold_coin"
+            ? "dificil"
+            : name === "silver_coin"
+            ? "medio"
+            : "facil";
+
+        tasksRewardsList[difficulty].coinIMG = src;
+      }
+    });
+
+    setRewardsList(tasksRewardsList);
+
     const rewardsIconsSrc = Object.entries(chestSprites).map(([path, mod]) => {
       const name = path
         .split("/")
@@ -302,7 +326,7 @@ function App() {
     });
 
     console.log("Ícones de recompensa carregados:");
-    console.log(rewardIconsList);
+    console.log(tasksRewardsList);
 
     setRewardsIcons(rewardIconsList);
   }, []);
@@ -311,27 +335,27 @@ function App() {
     setEmptyListMessage(tasks.length > 0 ? false : true);
   }, [tasks]);
 
-  useEffect(() => {
-    // Extraindo os caminhos (src) das imagens
-    const imgCoins = Object.values(coinSprites).map((img) => img.default);
-    //listImgCoins.current = imgCoins;
+  // useEffect(() => {
+  //   // Extraindo os caminhos (src) das imagens
+  //   const imgCoins = Object.values(coinSprites).map((img) => img.default);
+  //   //listImgCoins.current = imgCoins;
 
-    imgCoins.forEach((item) => {
-      const coinName = item.split("/");
-      if (coinName[coinName.length - 1] != "xp.gif") {
-        listImgCoins.current.push({
-          name: coinName[coinName.length - 1],
-          src: item,
-        });
+  //   imgCoins.forEach((item) => {
+  //     const coinName = item.split("/");
+  //     if (coinName[coinName.length - 1] != "xp.gif") {
+  //       listImgCoins.current.push({
+  //         name: coinName[coinName.length - 1],
+  //         src: item,
+  //       });
 
-        //console.log(item);
-      }
+  //       //console.log(item);
+  //     }
 
-      //console.log(coinName);
-    });
+  //     //console.log(coinName);
+  //   });
 
-    //console.log(imgCoins);
-  }, []);
+  //   //console.log(imgCoins);
+  // }, []);
 
   //verificardor de XP
   useEffect(() => {
@@ -571,22 +595,14 @@ function App() {
     if (task) {
       // Verificando se a tarefa foi encontrada
       const resp = await new Promise(async (resolve) => {
-        const coin = await import(
-          `../../assets/icons/taskIcons/${
-            rewardsList[removerAcentuacao(task.difficulty)].coinIMG
-          }`
-        ); // A importação precisa ser aguardada
-
         resolve({
           status: true,
           taskInfo: selectedTask,
-          coin: coin.default,
         });
       });
 
       setStatusClickDescription(resp.status);
       setTaskInfo(resp.taskInfo);
-      setCoinIMG(resp.coin);
     }
   }
 
@@ -598,19 +614,6 @@ function App() {
         rewardSelectedTask.current = task;
       }
     });
-
-    const coin =
-      rewardsList[removerAcentuacao(rewardSelectedTask.current.difficulty)]
-        .coinIMG;
-
-    listImgCoins.current.forEach((item) => {
-      if (item.name == coin) {
-        //console.log(item.src);
-        setCoinIMG(item.src);
-      }
-    });
-
-    //console.log(coin);
   }
 
   function reciveReward(taskId) {
@@ -1105,7 +1108,13 @@ function App() {
                 } Moedas`}
               </p>
               <img
-                src={coinIMG}
+                src={
+                  rewardSelectedTask.current != null
+                    ? rewardsList[
+                        removerAcentuacao(rewardSelectedTask.current.difficulty)
+                      ].coinIMG
+                    : null
+                }
                 alt=""
                 className="max-w-full max-h-full aspect-square w-[3.5dvw]"
               />
@@ -1984,7 +1993,6 @@ function App() {
                   displayTaskDescription={displayTaskDescription}
                   setDisplayTaskDescription={setDisplayTaskDescription}
                   rewards={rewardsList[removerAcentuacao(taskInfo.difficulty)]}
-                  coinIMG={coinIMG}
                   xpIMG={xpIMG}
                 />
               ) : (
