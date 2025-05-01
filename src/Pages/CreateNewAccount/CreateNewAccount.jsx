@@ -258,8 +258,13 @@ function CreateNewAccount() {
     );
 
     const shopAnimatedBannersImgs = {
-      webp: Object.values(shopAnimatedBanners.webp).map((img) => img.default),
-      png: Object.values(shopAnimatedBanners.png).map((img) => img.default),
+      webp: Object.values(shopAnimatedBanners.webp)
+        .filter((img) => img && img.default)
+        .map((img) => img.default),
+
+      png: Object.values(shopAnimatedBanners.png)
+        .filter((img) => img && img.default)
+        .map((img) => img.default),
     };
 
     const defaultStaticBackgroundsImgs = Object.values(defaultBackgrounds).map(
@@ -529,14 +534,17 @@ function CreateNewAccount() {
     });
 
     shopAnimatedBannersImgs.webp.forEach((img, index) => {
+      if (!img || !shopAnimatedBannersImgs.png[index]) return;
+
       const srcImage = img.split("/");
+      const fileName = srcImage[srcImage.length - 1];
 
       const rarity =
         itemRarityList[Math.floor(Math.random() * itemRarityList.length)];
 
       shopItems.banners.animated.push({
         id: index,
-        name: srcImage[srcImage.length - 1],
+        name: fileName,
         unlocked: false,
         rarity: rarityItem[rarity].name,
         price: rarityItem[rarity].price,

@@ -250,37 +250,40 @@ function App() {
       facil: {
         coins: 2,
         xp: 5,
-        coinIMG: "bronze_coin.png",
+        coinIMG: "",
       },
       medio: {
         coins: 5,
         xp: 15,
-        coinIMG: "silver_coin.png",
+        coinIMG: "",
       },
       dificil: {
         coins: 20,
         xp: 50,
-        coinIMG: "gold_coin.png",
+        coinIMG: "",
       },
       desafio: {
         coins: 50,
         xp: 100,
-        coinIMG: "diamond_coin.png",
+        coinIMG: "",
       },
     };
 
-    coinsIconsSrc.forEach(({ name, src }) => {
-      if (name != "xp") {
-        const difficulty =
-          name === "diamond_coin"
-            ? "desafio"
-            : name === "gold_coin"
-            ? "dificil"
-            : name === "silver_coin"
-            ? "medio"
-            : "facil";
+    // Define palavras-chave que identificam a dificuldade em nomes de imagem
+    const matchKeywords = {
+      facil: ["bronze", "common", "facil"],
+      medio: ["silver", "medio", "medium"],
+      dificil: ["gold", "hard", "dificil"],
+      desafio: ["diamond", "legendary", "desafio"],
+    };
 
-        tasksRewardsList[difficulty].coinIMG = src;
+    // Para cada imagem, associa com a dificuldade correta baseada nas palavras-chave
+    coinsIconsSrc.forEach(({ name, src }) => {
+      for (const [dificuldade, keywords] of Object.entries(matchKeywords)) {
+        if (keywords.some((kw) => name.toLowerCase().includes(kw))) {
+          tasksRewardsList[dificuldade].coinIMG = src;
+          break;
+        }
       }
     });
 
@@ -325,8 +328,8 @@ function App() {
       };
     });
 
-    console.log("Ícones de recompensa carregados:");
-    console.log(tasksRewardsList);
+    // console.log("Ícones de recompensa carregados:");
+    // console.log(tasksRewardsList);
 
     setRewardsIcons(rewardIconsList);
   }, []);
@@ -334,28 +337,6 @@ function App() {
   useEffect(() => {
     setEmptyListMessage(tasks.length > 0 ? false : true);
   }, [tasks]);
-
-  // useEffect(() => {
-  //   // Extraindo os caminhos (src) das imagens
-  //   const imgCoins = Object.values(coinSprites).map((img) => img.default);
-  //   //listImgCoins.current = imgCoins;
-
-  //   imgCoins.forEach((item) => {
-  //     const coinName = item.split("/");
-  //     if (coinName[coinName.length - 1] != "xp.gif") {
-  //       listImgCoins.current.push({
-  //         name: coinName[coinName.length - 1],
-  //         src: item,
-  //       });
-
-  //       //console.log(item);
-  //     }
-
-  //     //console.log(coinName);
-  //   });
-
-  //   //console.log(imgCoins);
-  // }, []);
 
   //verificardor de XP
   useEffect(() => {
@@ -641,7 +622,7 @@ function App() {
             rewardReceived: true,
           };
         } else {
-          console.log("Sem alteração");
+          //console.log("Sem alteração");
           return task;
         }
       }
@@ -724,7 +705,7 @@ function App() {
   function buyItemStore(shopItemType) {
     if (!itemInfoSelected) return;
 
-    console.log(shopItemType);
+    //console.log(shopItemType);
 
     if (shopItemType == "customAvatar") {
       const item =
@@ -737,7 +718,7 @@ function App() {
           "Moedas insuficientes! Complete mais missões para conquistar este tesouro."
         );
       } else {
-        console.log("Item Comprado");
+        //console.log("Item Comprado");
         userAccount.coins -= item.price;
 
         let unlockedItem = { ...item };
@@ -750,8 +731,8 @@ function App() {
 
         unlockedItems.avatars.customize[customAvatarSession].push(unlockedItem);
 
-        console.log(`Item desbloqueado`);
-        console.log(unlockedItems.avatars.customize[customAvatarSession]);
+        // console.log(`Item desbloqueado`);
+        // console.log(unlockedItems.avatars.customize[customAvatarSession]);
 
         const updateShopItem = shopItems.avatars.customize[
           customAvatarSession
@@ -764,8 +745,8 @@ function App() {
         //console.log(updateShopItem);
         shopItems.avatars.customize[customAvatarSession] = updateShopItem;
 
-        console.log("Itens do Shop");
-        console.log(shopItems);
+        // console.log("Itens do Shop");
+        // console.log(shopItems);
 
         localStorage.setItem("shopItems", JSON.stringify(shopItems));
         shopItems = JSON.parse(localStorage.getItem("shopItems"));
@@ -787,7 +768,7 @@ function App() {
           "Moedas insuficientes! Complete mais missões para conquistar este tesouro."
         );
       } else {
-        console.log("Item Comprado");
+        //console.log("Item Comprado");
         userAccount.coins -= item.price;
 
         let unlockedItem = { ...item };
@@ -800,8 +781,8 @@ function App() {
           unlockedItem
         );
 
-        console.log(`Item desbloqueado`);
-        console.log(unlockedItems[selectedStoreType][selectedStoreItemType]);
+        // console.log(`Item desbloqueado`);
+        // console.log(unlockedItems[selectedStoreType][selectedStoreItemType]);
 
         const updateShopItem = shopItems[selectedStoreType][
           selectedStoreItemType
@@ -814,8 +795,8 @@ function App() {
 
         shopItems[selectedStoreType][selectedStoreItemType] = updateShopItem;
 
-        console.log("Itens do Shop");
-        console.log(shopItems);
+        // console.log("Itens do Shop");
+        // console.log(shopItems);
 
         localStorage.setItem("shopItems", JSON.stringify(shopItems));
         shopItems = JSON.parse(localStorage.getItem("shopItems"));
@@ -828,31 +809,39 @@ function App() {
   }
 
   function customizeAccout(shopItemType) {
-    if (!itemInfoSelected) return;
-
     if (shopItemType == "customAvatar") {
-      console.log("Salvando avatar customizado!");
-      console.log(customAvatarSession);
+      if (!itemInfoSelected) {
+        userAccount.avatarType = "createAvatar";
+        setAvatarType("createAvatar");
 
-      const item =
-        unlockedItems.avatars.customize[customAvatarSession][
-          itemInfoSelected.id
-        ].src;
+        setChangeCustomAvatar(userAccount.customAvatar);
 
-      console.log("Item selecionado:");
-      console.log(item);
-      userAccount.customAvatar[customAvatarSession] = item;
+        localStorage.setItem("user", JSON.stringify(userAccount));
+      } else {
+        // console.log("Salvando avatar customizado!");
+        // console.log(customAvatarSession);
 
-      setChangeCustomAvatar((prev) => ({
-        ...prev,
-        [customAvatarSession]: item,
-      }));
+        const item =
+          unlockedItems.avatars.customize[customAvatarSession][
+            itemInfoSelected.id
+          ].src;
 
-      userAccount.avatarType = "createAvatar";
-      setAvatarType("createAvatar");
+        // console.log("Item selecionado:");
+        // console.log(item);
+        userAccount.customAvatar[customAvatarSession] = item;
 
-      localStorage.setItem("user", JSON.stringify(userAccount));
+        setChangeCustomAvatar((prev) => ({
+          ...prev,
+          [customAvatarSession]: item,
+        }));
+
+        userAccount.avatarType = "createAvatar";
+        setAvatarType("createAvatar");
+
+        localStorage.setItem("user", JSON.stringify(userAccount));
+      }
     } else {
+      if (!itemInfoSelected) return;
       const item =
         shopItemType == "animated"
           ? unlockedItems[selectedStoreType][selectedStoreItemType][
@@ -862,8 +851,8 @@ function App() {
               itemInfoSelected.id
             ].src;
 
-      console.log("Salvo com sucesso!");
-      console.log(item);
+      // console.log("Salvo com sucesso!");
+      // console.log(item);
 
       userAccount.avatarType = "chooseAvatar";
       setAvatarType("chooseAvatar");
@@ -1348,9 +1337,10 @@ function App() {
                         ].unlocked
                       ) {
                         buyItemStore(shopAreaSelected);
-                      } else {
-                        console.log("Item Vendido");
                       }
+                      // else {
+                      //   console.log("Item Vendido");
+                      // }
                     }}
                     className={`${
                       accountOptionBtnSelected.toLowerCase() == "loja"
@@ -1364,9 +1354,10 @@ function App() {
                     onClick={() => {
                       if (itemInfoSelected) {
                         customizeAccout(selectedStoreItemType);
-                      } else {
-                        console.log("Nada salvo!");
                       }
+                      // else {
+                      //   console.log("Nada salvo!");
+                      // }
                     }}
                     className={`${
                       accountOptionBtnSelected.toLowerCase() == "loja"
@@ -1524,9 +1515,10 @@ function App() {
                           ].unlocked
                         ) {
                           buyItemStore("customAvatar");
-                        } else {
-                          console.log("Item Vendido");
                         }
+                        // else {
+                        //   console.log("Item Vendido");
+                        // }
                       }}
                       className={`${
                         accountOptionBtnSelected.toLowerCase() == "loja"
@@ -1538,11 +1530,7 @@ function App() {
                     </button>
                     <button
                       onClick={() => {
-                        if (itemInfoSelected) {
-                          customizeAccout("customAvatar");
-                        } else {
-                          console.log("Nada salvo!");
-                        }
+                        customizeAccout("customAvatar");
                       }}
                       className={`${
                         accountOptionBtnSelected.toLowerCase() == "loja"
@@ -1718,7 +1706,7 @@ function App() {
             </button>
             <button
               onClick={() => {
-                console.log(rewardsIcons);
+                //console.log(rewardsIcons);
                 setDisplayAccountSettings("grid");
               }}
               id="settingsBtn"
