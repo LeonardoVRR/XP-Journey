@@ -6,7 +6,7 @@
 
 - [Descrição do Projeto](#descrição-do-projeto)
 - [Objetivo do projeto](#objetivo-do-projeto)
-- [Funcionalidades](#🎮-funcionalidades)
+- [Funcionalidades](#funcionalidades)
 - [Pré-requisitos](#pré-requisitos)
 - [Resultado final do projeto](#resultado-final-do-projeto)
 - [Acesso ao Projeto](#acesso-ao-projeto)
@@ -25,7 +25,7 @@ O principal objetivo deste projeto foi praticar os conceitos básicos de React, 
 
 ⚠️ Observação: O design foi desenvolvido pensando na versão desktop. Para a melhor experiência, utilize um computador.
 
-## 🎮 Funcionalidades
+## Funcionalidades
 
 - ✅ **Criar, editar, concluir, visualizar e excluir tarefas**
 - 🔍 **Filtros** por nome, status (pendente/concluída), nível de dificuldade e data de criação
@@ -49,7 +49,7 @@ não é necessário nenhum pré-requisito é só acessar o projeto pelo link dis
 
 ## Acesso ao Projeto
 
-para acessar o projeto utilize o seguinte link:
+para acessar o projeto utilize o seguinte link: https://xp-journey.netlify.app/
 
 ## Tecnologias utilizadas
 
