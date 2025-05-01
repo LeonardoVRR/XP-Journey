@@ -9,6 +9,7 @@
 - [Funcionalidades](#funcionalidades)
 - [Pré-requisitos](#pré-requisitos)
 - [Resultado final do projeto](#resultado-final-do-projeto)
+- [Video de demonstração](#video-de-demonstração)
 - [Acesso ao Projeto](#acesso-ao-projeto)
 - [Tecnologias utilizadas](#tecnologias-utilizadas)
 - [Licença](#licença)
@@ -46,6 +47,10 @@ não é necessário nenhum pré-requisito é só acessar o projeto pelo link dis
 ![alt text](<./public/FireShot Capture 014 - XP Journey - [localhost].png>)
 
 ![alt text](<./public/FireShot Capture 015 - XP Journey - [localhost].png>)
+
+## Video de demonstração
+
+Assita o video de demonstração do projeto pelo youtube: [Link do video](https://youtu.be/cWxH_72jw70?si=-ExKK5pkBUzBgRKW)
 
 ## Acesso ao Projeto
 
