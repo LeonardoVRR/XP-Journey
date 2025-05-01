@@ -41,11 +41,11 @@ não é necessário nenhum pré-requisito é só acessar o projeto pelo link dis
 
 ## Resultado final do projeto
 
-![alt text](<FireShot Capture 018 - XP Journey - [localhost].png>)
+![alt text](<./public/FireShot Capture 018 - XP Journey - [localhost].png>)
 
-![alt text](<FireShot Capture 014 - XP Journey - [localhost].png>)
+![alt text](<./public/FireShot Capture 014 - XP Journey - [localhost].png>)
 
-![alt text](<FireShot Capture 015 - XP Journey - [localhost].png>)
+![alt text](<./public/FireShot Capture 015 - XP Journey - [localhost].png>)
 
 ## Acesso ao Projeto
 

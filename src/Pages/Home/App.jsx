@@ -9,8 +9,8 @@ import pendingTaskIcon from "../../assets/icons/pending.png";
 import DescriptionTask from "../../Components/DescriptionTask/DescriptionTask";
 import EditTask from "../../Components/EditTask/EditTask";
 
-// import rewardIcon from "../../assets/icons/rewardsIcons/rareReward.png";
-// import rewardReceivedIcon from "../../assets/icons/rewardsIcons/rareReward_open.png";
+import giftRewardIcon from "../../assets/icons/gift.png";
+import giftRewardReceivedIcon from "../../assets/icons/gift_open.png";
 import xpIMG from "../../assets/icons/taskIcons/xp.gif";
 
 import customizeIcon from "../../assets/icons/customizeIcon.png";
@@ -293,8 +293,6 @@ function App() {
     });
 
     setRewardsIcons(rewardIconsList);
-
-    //
   }, []);
 
   useEffect(() => {
@@ -2058,16 +2056,26 @@ function App() {
                                           : {}
                                       }
                                       src={
-                                        task.rewardReceived
-                                          ? rewardsIcons[
-                                              removerAcentuacao(task.difficulty)
-                                            ].reciveRewardIcon
-                                          : rewardsIcons[
-                                              removerAcentuacao(task.difficulty)
-                                            ].rewardIcon
+                                        rewardsIcons
+                                          ? task.rewardReceived
+                                            ? rewardsIcons[
+                                                removerAcentuacao(
+                                                  task.difficulty
+                                                )
+                                              ].reciveRewardIcon
+                                            : rewardsIcons[
+                                                removerAcentuacao(
+                                                  task.difficulty
+                                                )
+                                              ].rewardIcon
+                                          : task.rewardReceived
+                                          ? giftRewardReceivedIcon
+                                          : giftRewardIcon
                                       }
                                       alt=""
-                                      className={`max-w-full max-h-full scale-150`}
+                                      className={`max-w-full max-h-full ${
+                                        rewardsIcons ? "scale-150" : "scale-120"
+                                      } `}
                                     />
                                   </button>
                                 </td>
@@ -2160,16 +2168,26 @@ function App() {
                                           : {}
                                       }
                                       src={
-                                        task.rewardReceived
-                                          ? rewardsIcons[
-                                              removerAcentuacao(task.difficulty)
-                                            ].reciveRewardIcon
-                                          : rewardsIcons[
-                                              removerAcentuacao(task.difficulty)
-                                            ].rewardIcon
+                                        rewardsIcons
+                                          ? task.rewardReceived
+                                            ? rewardsIcons[
+                                                removerAcentuacao(
+                                                  task.difficulty
+                                                )
+                                              ].reciveRewardIcon
+                                            : rewardsIcons[
+                                                removerAcentuacao(
+                                                  task.difficulty
+                                                )
+                                              ].rewardIcon
+                                          : task.rewardReceived
+                                          ? giftRewardReceivedIcon
+                                          : giftRewardIcon
                                       }
                                       alt=""
-                                      className={`max-w-full max-h-full scale-150`}
+                                      className={`max-w-full max-h-full ${
+                                        rewardsIcons ? "scale-150" : "scale-120"
+                                      } `}
                                     />
                                   </button>
                                 </td>

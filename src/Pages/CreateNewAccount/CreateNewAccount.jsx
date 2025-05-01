@@ -205,6 +205,12 @@ function CreateNewAccount() {
 
   function chooseUserName(event) {
     event.preventDefault();
+
+    if (localStorage.getItem("user") != null) {
+      localStorage.clear();
+      setDisplayLoginAccount("hidden");
+    }
+
     userName.current = event.currentTarget.querySelector("input").value;
 
     event.currentTarget.querySelector("input").value = "";
